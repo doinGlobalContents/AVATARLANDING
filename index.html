@@ -10,15 +10,17 @@
             color: #262626;
             margin: 0;
             padding: 0;
-            background-color: #262626;
+            
+            background: radial-gradient(circle, rgba(37, 40, 43, 0.1) 0%, rgba(30, 33, 39, 0.8) 80%, #262626 100%);
         }
         header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 20px;
+            padding: 5px;
             background-color: #f5f5f5;
             border-bottom: 1px solid #ddd;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
         }
         header img {
             max-height: 80px;
@@ -32,37 +34,67 @@
             flex-direction: column;
             align-items: center;
             gap: 20px;
-            padding: 20px;
-            
+            padding: 50px;
         }
         .avatar-container {
-            width: 1080px;
-            height: 1080px;
-            border: 1px solid #ddd;
+            width: 700px;
+            height: 700px;
+            
             background-color: #fff;
             box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-            display: flex;
+            display: none;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             border-radius: 20px;
         }
+        .avatar-container.active {
+            display: flex;
+        }
         .avatar-container h2 {
             margin: 0;
             padding: 10px;
             font-size: 1.5em;
-            border-radius: 20px;
+            border-radius: 10px;
+        }
+        .button-container {
+            display: flex;
+            gap: 10px;
+            
+        }
+
+        .button-container button {
+            padding: 10px 20px;
+            font-family: poppins, sans-serif;
+            font-style: bold;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            background-color: #262626;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        .button-container button:hover {
+            background-color: #99cc06;
         }
     </style>
 </head>
 <body>
     <header>
-        <img src="LOGO DOINGLOBAL.png" alt="Company Logo">
+        <img src="C:\Users\Usuario\Desktop\Landing\LOGO DOINGLOBAL.png" alt="Company Logo">
         <h1>HeyGen Avatars</h1>
     </header>
     <main>
-        <div class="avatar-container" id="avatar1">
+        <div class="button-container">
+            <button onclick="showAvatar('avatar1')">Asistente TIF</button>
+            <button onclick="showAvatar('avatar2')">Reclutador RRHH</button>
+            <button onclick="showAvatar('avatar3')">Business Coach</button>
+        </div>
+
+        <div class="avatar-container active" id="avatar1">
             <h2>Asistente TIF</h2>
             <script>
                 !function(window){
@@ -115,8 +147,8 @@
                     document.getElementById("avatar1").appendChild(wrapDiv);
                 }(globalThis);
                 </script>
-                
         </div>
+
         <div class="avatar-container" id="avatar2">
             <h2>Reclutador RRHH</h2>
             <script>
@@ -170,10 +202,10 @@
                     document.getElementById("avatar2").appendChild(wrapDiv);
                 }(globalThis);
                 </script>
-                
         </div>
+
         <div class="avatar-container" id="avatar3">
-            <h2>Bussines Coach</h2>
+            <h2>Business Coach</h2>
             <script>
                 !function(window){
                     const host="https://labs.heygen.com",
@@ -225,8 +257,18 @@
                     document.getElementById("avatar3").appendChild(wrapDiv);
                 }(globalThis);
                 </script>
-                
         </div>
-            </main>
+    </main>
+    <script>
+        function showAvatar(avatarId) {
+            // Hide all avatar containers
+            document.querySelectorAll('.avatar-container').forEach(container => {
+                container.classList.remove('active');
+            });
+
+            // Show the selected avatar container
+            document.getElementById(avatarId).classList.add('active');
+        }
+    </script>
 </body>
 </html>
